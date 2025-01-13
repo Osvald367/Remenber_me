@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:remenber_me/components/colors.dart';
-import 'package:remenber_me/home.dart';
+import 'package:remenber_me/pages/home.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
