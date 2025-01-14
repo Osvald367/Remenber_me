@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:remenber_me/components/colors.dart';
+import 'package:remenber_me/pages/setting.dart';
 
 class Profile extends StatelessWidget {
   @override
@@ -23,7 +25,18 @@ class Profile extends StatelessWidget {
             fontSize: 24, // Taille ajustée pour correspondre à la maquette
           ),
         ),
-     
+        actions: [
+          IconButton(
+            icon: Icon(Icons.settings, color: Colors.black),
+            onPressed: () {
+              // Action pour ouvrir les paramètres
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Setting()),
+              );
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 16),
@@ -35,33 +48,27 @@ class Profile extends StatelessWidget {
             Center(
               child: Column(
                 children: [
-
-
-                  Container(  
+                  Container(
                     width: 100,
                     height: 100,
                     decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100),
+                      borderRadius: BorderRadius.circular(100),
+                      // color: AppColors.vert,
                       border: Border(
                         bottom: BorderSide(
-                          color: Colors.grey.shade300,
+                          color: AppColors.vert,
                           width: 1.0,
                         ),
                       ),
                     ),
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: Center(
-                      
-                        child: Image.asset(
-                          'images/Netflix-Logo-2006.png', // Remplacez par le chemin de votre logo
-                          height: 100,
-                        ),
-                    
+                      child: Image.asset(
+                        'images/profile.png', // Remplacez par le chemin de votre logo
+                        height: 100,
+                      ),
                     ),
                   ),
-
-
-
                   Text(
                     'Jessie Prescott',
                     style: TextStyle(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:remenber_me/components/colors.dart';
 
 class Setting extends StatefulWidget {
   @override
@@ -44,7 +45,7 @@ class _SettingState extends State<Setting> {
               "Général",
               [
                 _buildSwitchRow(
-                  Icons.notifications,
+                  Icons.notifications_outlined,
                   "Alerte",
                   isAlertEnabled,
                   (value) {
@@ -54,7 +55,7 @@ class _SettingState extends State<Setting> {
                   },
                 ),
                 _buildSwitchRow(
-                  Icons.sms,
+                  Icons.sms_outlined,
                   "Notification SMS",
                   isSmsEnabled,
                   (value) {
@@ -74,7 +75,7 @@ class _SettingState extends State<Setting> {
                   },
                 ),
                 _buildDropdownRow(
-                  Icons.notifications_active,
+                  Icons.notifications_active_outlined,
                   "Sonnerie",
                   "Par défaut",
                 ),
@@ -86,7 +87,8 @@ class _SettingState extends State<Setting> {
               "Gestion des abonnements",
               [
                 _buildListTile(Icons.attach_money, "Calcul des dépenses"),
-                _buildListTile(Icons.bar_chart, "Recommandations pour optimiser"),
+                _buildListTile(
+                    Icons.bar_chart, "Recommandations pour optimiser"),
                 _buildListTile(Icons.history, "Historique des paiements"),
               ],
             ),
@@ -158,9 +160,9 @@ class _SettingState extends State<Setting> {
             ],
           ),
           Switch(
-          //  activeTrackColor: AppColors.vert,
-           inactiveThumbColor:Colors.grey,
-           inactiveTrackColor:Colors.white,
+            activeTrackColor: AppColors.vert,
+            inactiveThumbColor: Colors.grey,
+            inactiveTrackColor: Colors.white,
             value: value,
             onChanged: onChanged,
           ),
@@ -197,6 +199,7 @@ class _SettingState extends State<Setting> {
             value: dropdownValue,
             underline: SizedBox(),
             icon: Icon(Icons.arrow_drop_down, color: Colors.grey),
+            dropdownColor: Colors.white,
             onChanged: (String? newValue) {
               // Action pour le changement de dropdown
             },

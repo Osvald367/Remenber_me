@@ -14,7 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Remenber Me',
-      home: StartupScreen(),
+<<<<<<< HEAD
+=======
+     home: StartupScreen(),
+>>>>>>> origin/master
     );
   }
 }

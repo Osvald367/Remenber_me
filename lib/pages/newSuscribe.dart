@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:remenber_me/components/appbar.dart';
+import 'package:remenber_me/components/colors.dart';
+import 'package:remenber_me/pages/profile.dart';
 
 class NewSubscribe extends StatefulWidget {
   @override
@@ -9,19 +12,19 @@ class _NewSubscribeState extends State<NewSubscribe> {
   String selectedService = 'Netflix';
   String selectedDuration = '1an';
 
-  final List<String> services = [
-    'Spotify',
-    'Figma',
-    'Canal +',
-    'Isocel',
-    'Netflix',
-    'Canva',
-    'Amazon',
-    'Nextmux pay',
-    'Disney +',
-    'Coursera',
-    'LinkedIn',
-    'Microsoft'
+  final List<Map<String, String>> services = [
+    {'name': 'Spotify', 'image': 'images/spotify.png'},
+    {'name': 'Figma', 'image': 'images/figma.png'},
+    {'name': 'Canal +', 'image': 'images/canalplus.png'},
+    {'name': 'Isocel', 'image': 'images/netflix.png'},
+    {'name': 'Netflix', 'image': 'images/netflix.png'},
+    {'name': 'Canva', 'image': 'images/canva_pro.png'},
+    {'name': 'Amazon', 'image': 'images/amazon.png'},
+    {'name': 'Nextmux pay', 'image': 'images/netflix.png'},
+    {'name': 'Disney +', 'image': 'images/disney.png'},
+    {'name': 'Coursera', 'image': 'images/coursera.png'},
+    {'name': 'LinkedIn', 'image': 'images/linkedIn.png'},
+    {'name': 'Microsoft', 'image': 'images/microsoft.png'},
   ];
 
   final List<String> durations = ['1an', '6mois', '3mois', '1mois'];
@@ -29,6 +32,20 @@ class _NewSubscribeState extends State<NewSubscribe> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar(
+          titleFirstPart: 'Remember',
+          titleSecondPart: 'me',
+          logoPath: 'images/logo.png', // Chemin du logo
+          profileImagePath: 'images/profile.png',
+          onProfileTap: () {
+            // Action à effectuer lors du clic sur l'image de profil
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Profile()),
+            );
+            print("Profil cliqué !");
+          } // Chemin de l'image de profil
+          ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -53,24 +70,26 @@ class _NewSubscribeState extends State<NewSubscribe> {
               child: DropdownButton<String>(
                 value: selectedService,
                 icon: const Icon(Icons.arrow_drop_down, color: Colors.grey),
-                dropdownColor: Colors.white, // Arrière-plan blanc du menu
+                dropdownColor: Colors.white,
                 underline: const SizedBox(),
                 onChanged: (value) {
                   setState(() {
                     selectedService = value!;
                   });
                 },
-                items: services.map((String value) {
+                items: services.map((service) {
                   return DropdownMenuItem<String>(
-                    value: value,
+                    value: service['name'], // Le nom du service
                     child: Row(
                       children: [
-                        // Icône dynamique pour chaque service
-                        if (value == 'Netflix')  Image.asset('images/Netflix-Logo-2006.png', height: 15,  ),
-                        if (value == 'Spotify') Icon(Icons.music_note, color: Colors.green),
-                        
+                        Image.asset(
+                          service['image']!,
+                          height: 20,
+                          width: 20,
+                          fit: BoxFit.contain,
+                        ),
                         const SizedBox(width: 10),
-                        Text(value),
+                        Text(service['name']!),
                       ],
                     ),
                   );
@@ -87,17 +106,17 @@ class _NewSubscribeState extends State<NewSubscribe> {
               child: DropdownButton<String>(
                 value: selectedDuration,
                 icon: const Icon(Icons.arrow_drop_down, color: Colors.grey),
-                dropdownColor: Colors.white, // Arrière-plan blanc du menu
+                dropdownColor: Colors.white,
                 underline: const SizedBox(),
                 onChanged: (value) {
                   setState(() {
                     selectedDuration = value!;
                   });
                 },
-                items: durations.map((String value) {
+                items: durations.map((String duration) {
                   return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
+                    value: duration, // La valeur de durée
+                    child: Text(duration),
                   );
                 }).toList(),
               ),
@@ -154,7 +173,7 @@ class _NewSubscribeState extends State<NewSubscribe> {
                     // Action Enregistrer
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.teal,
+                    backgroundColor: AppColors.vert,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -182,7 +201,8 @@ class _NewSubscribeState extends State<NewSubscribe> {
         ),
         const SizedBox(width: 8),
         IconButton(
-          icon: Icon(Icons.calendar_today, color: Colors.grey.shade600, size: 20),
+          icon:
+              Icon(Icons.calendar_today, color: Colors.grey.shade600, size: 20),
           onPressed: () {
             // Logic de sélection de date
           },
@@ -196,7 +216,8 @@ class _NewSubscribeState extends State<NewSubscribe> {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         IconButton(
-          icon: Icon(Icons.image_outlined, color: Colors.grey.shade600, size: 20),
+          icon:
+              Icon(Icons.image_outlined, color: Colors.grey.shade600, size: 20),
           onPressed: () {
             // Logic pour l'icône
           },
