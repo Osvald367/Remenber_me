@@ -7,6 +7,7 @@ import 'package:remenber_me/pages/abonnement_actif.dart';
 import 'package:remenber_me/pages/abonnement_inactif.dart';
 import 'package:remenber_me/pages/collection_page.dart';
 import 'package:remenber_me/pages/parametre_abonnement.dart';
+import 'package:remenber_me/pages/profile.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -16,15 +17,15 @@ class HomeScreen extends StatelessWidget {
         titleFirstPart: 'Remember',
         titleSecondPart: 'me',
         logoPath: 'images/logo.png', // Chemin du logo
-        profileImagePath: 'images/profile.png', // Chemin de l'image de profil
+        profileImagePath: 'images/profile.png',
         onProfileTap: () {
           // Action à effectuer lors du clic sur l'image de profil
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => ParametresAbonnement(nomService: '', logoService: '',)),
+            MaterialPageRoute(builder: (context) => Profile()),
           );
           print("Profil cliqué !");
-        },
+        } // Chemin de l'image de profil
       ),
       body: Container(
         color: AppColors.blanc,

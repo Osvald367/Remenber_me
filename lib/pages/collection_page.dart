@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:remenber_me/components/appbar.dart';
 import 'package:remenber_me/components/colors.dart';
-import 'package:remenber_me/pages/paiement_page.dart';
+import 'package:remenber_me/pages/profile.dart';
 
 class CollectionPage extends StatelessWidget {
   // Final list of collections
@@ -23,11 +23,11 @@ class CollectionPage extends StatelessWidget {
         onProfileTap: () {
           // Action à effectuer lors du clic sur l'image de profil
           Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => PaiementPage()),
-                  );
+            context,
+            MaterialPageRoute(builder: (context) => Profile()),
+          );
           print("Profil cliqué !");
-        },
+        }
       ),
       body: Container(
         color: AppColors.blanc,

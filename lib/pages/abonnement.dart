@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:remenber_me/components/appbar.dart';
 import 'package:remenber_me/components/colors.dart';
+import 'package:remenber_me/pages/profile.dart';
+import 'package:remenber_me/pages/suscribe.dart';
 
 class AbonnementPage extends StatelessWidget {
   final List<Map<String, dynamic>> abonnements = [
@@ -40,8 +42,12 @@ class AbonnementPage extends StatelessWidget {
         profileImagePath: 'images/profile.png', // Chemin de l'image de profil
         onProfileTap: () {
           // Action à effectuer lors du clic sur l'image de profil
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Profile()),
+          );
           print("Profil cliqué !");
-        },
+        }
       ),
       body: Container(
         color: AppColors.blanc, // Set the background color here
@@ -132,11 +138,24 @@ class AbonnementPage extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    abonnement['nom']!,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold, fontSize: 16),
-                                  ),
+                                  GestureDetector(
+                                    onTap: () {
+                                      // Action à effectuer lors du clic sur le nom
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                SubscriptionDetails()),
+                                      );
+                                    },
+                                    child: Text(
+                                      abonnement['nom'],
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  )
                                 ],
                               ),
                             ),
