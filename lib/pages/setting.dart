@@ -199,6 +199,7 @@ class _SettingState extends State<Setting> {
             value: dropdownValue,
             underline: SizedBox(),
             icon: Icon(Icons.arrow_drop_down, color: Colors.grey),
+            dropdownColor: Colors.white,
             onChanged: (String? newValue) {
               // Action pour le changement de dropdown
             },
