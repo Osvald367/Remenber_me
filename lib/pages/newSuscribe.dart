@@ -70,22 +70,7 @@ class _NewSubscribeState extends State<NewSubscribe> {
                 'images/Netflix-Logo-2006.png',
                 height: 15,
               ),
-      //      if (value == 'Spotify')
-       //        Image.asset(
-       //          'images/spotify.png',
-      //           height: 15,
-       //        ),
-      //       if (value == 'Figma')
-      //         Image.asset(
-       //          'images/figma.png',
-        //         height: 15,
-        //       ),
-        //     if (value == 'Canal +')
-        //       Image.asset(
-         //        'images/canal.png',
-        //         height: 15,
-         //      ),
-         //    if (value == 'Amazon')
+  
               Image.asset(
                 'images/az.png',
                 height: 15,
