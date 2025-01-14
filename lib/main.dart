@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:remenber_me/pages/setting.dart';
+import 'package:remenber_me/pages/newSuscribe.dart';
 import 'package:remenber_me/slashscreens/startup_screen.dart';
 
 void main() {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Remenber Me',
   //    home: StartupScreen(),
-      home: Setting(),
+      home: NewSubscribe(),
     );
   }
 }
