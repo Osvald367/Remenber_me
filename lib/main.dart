@@ -11,10 +11,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+  return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Remenber Me',
-     home: StartupScreen(),
+      home: StartupScreen(), // Add the 'home:' keyword here
     );
   }
 }
