@@ -1,42 +1,61 @@
 import 'package:flutter/material.dart';
+import 'package:remenber_me/components/appbar.dart';
+import 'package:remenber_me/pages/parametre_abonnement.dart';
 
 class SubscriptionDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        centerTitle: true,
-        title: Text(
-          'Netflix',
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.settings, color: Colors.black),
-            onPressed: () {
-              // Action pour ouvrir les paramètres
-            },
-          ),
-        ],
+      appBar: CustomAppBar(
+        titleFirstPart: 'Remember',
+        titleSecondPart: 'me',
+        logoPath: 'images/logo.png', // Chemin du logo
+        profileImagePath: 'images/profile.png', // Chemin de l'image de profil
+        onProfileTap: () {
+          // Action à effectuer lors du clic sur l'image de profil
+          print("Profil cliqué !");
+        },
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 20),
+            SizedBox(height: 30),
+            Row(
+              children: [
+                IconButton(
+                  icon: Icon(Icons.arrow_back, color: Colors.black),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                Text(
+                  'Netflix',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+                SizedBox(width: 190),
+                IconButton(
+                  icon: Icon(Icons.settings, color: Colors.black),
+                  onPressed: () {
+                    // Action pour ouvrir les paramètres
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ParametresAbonnement(
+                                nomService: '',
+                                logoService: '',
+                              )),
+                    );
+                  },
+                ),
+              ],
+            ),
             // Logo
             Center(
               child: Column(

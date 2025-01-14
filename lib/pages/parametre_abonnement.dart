@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:remenber_me/components/appbar.dart';
 import 'package:remenber_me/components/colors.dart';
+import 'package:remenber_me/pages/profile.dart';
 
 class ParametresAbonnement extends StatefulWidget {
   final String nomService;
@@ -29,9 +30,13 @@ class _ParametresAbonnementState extends State<ParametresAbonnement> {
           logoPath: 'images/logo.png', // Chemin du logo
           profileImagePath: 'images/profile.png', // Chemin de l'image de profil
           onProfileTap: () {
-            // Action à effectuer lors du clic sur l'image de profil
-            print("Profil cliqué !");
-          },
+          // Action à effectuer lors du clic sur l'image de profil
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Profile()),
+          );
+          print("Profil cliqué !");
+        }
         ),
         body: Container(
           color: AppColors.blanc,
@@ -51,7 +56,7 @@ class _ParametresAbonnementState extends State<ParametresAbonnement> {
                       },
                     ),
                     Text(
-                      'Abonnements Actifs',
+                      'Netflix',
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
