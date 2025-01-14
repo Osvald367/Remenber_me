@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:remenber_me/components/appbar.dart';
 import 'package:remenber_me/components/colors.dart';
+import 'package:remenber_me/pages/newSuscribe.dart';
 import 'package:remenber_me/pages/profile.dart';
 import 'package:remenber_me/pages/suscribe.dart';
 
@@ -202,7 +203,13 @@ class AbonnementPage extends StatelessWidget {
                           180), // Espacement horizontal entre les deux boutons
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewSubscribe()),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.vert,
                         padding: const EdgeInsets.symmetric(vertical: 15.0),

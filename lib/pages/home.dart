@@ -6,7 +6,7 @@ import 'package:remenber_me/pages/abonnement.dart';
 import 'package:remenber_me/pages/abonnement_actif.dart';
 import 'package:remenber_me/pages/abonnement_inactif.dart';
 import 'package:remenber_me/pages/collection_page.dart';
-import 'package:remenber_me/pages/parametre_abonnement.dart';
+import 'package:remenber_me/pages/newSuscribe.dart';
 import 'package:remenber_me/pages/profile.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -14,19 +14,19 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        titleFirstPart: 'Remember',
-        titleSecondPart: 'me',
-        logoPath: 'images/logo.png', // Chemin du logo
-        profileImagePath: 'images/profile.png',
-        onProfileTap: () {
-          // Action à effectuer lors du clic sur l'image de profil
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => Profile()),
-          );
-          print("Profil cliqué !");
-        } // Chemin de l'image de profil
-      ),
+          titleFirstPart: 'Remember',
+          titleSecondPart: 'me',
+          logoPath: 'images/logo.png', // Chemin du logo
+          profileImagePath: 'images/profile.png',
+          onProfileTap: () {
+            // Action à effectuer lors du clic sur l'image de profil
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Profile()),
+            );
+            print("Profil cliqué !");
+          } // Chemin de l'image de profil
+          ),
       body: Container(
         color: AppColors.blanc,
         child: Padding(
@@ -110,11 +110,11 @@ class HomeScreen extends StatelessWidget {
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //       builder: (context) => AbonnementPage()),
-                        // );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => NewSubscribe()),
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.vert,
