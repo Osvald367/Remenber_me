@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:remenber_me/components/appbar.dart';
 import 'package:remenber_me/components/colors.dart';
 import 'package:remenber_me/components/subscription_card.dart';
+import 'package:remenber_me/pages/abonnement.dart';
+import 'package:remenber_me/pages/abonnement_actif.dart';
+import 'package:remenber_me/pages/abonnement_inactif.dart';
+import 'package:remenber_me/pages/collection_page.dart';
+import 'package:remenber_me/pages/parametre_abonnement.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -14,6 +19,10 @@ class HomeScreen extends StatelessWidget {
         profileImagePath: 'images/profile.png', // Chemin de l'image de profil
         onProfileTap: () {
           // Action à effectuer lors du clic sur l'image de profil
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ParametresAbonnement(nomService: '', logoService: '',)),
+          );
           print("Profil cliqué !");
         },
       ),
@@ -35,7 +44,12 @@ class HomeScreen extends StatelessWidget {
                 iconColor: Colors.black,
                 title: "Tous les Abonnements",
                 count: 25,
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AbonnementPage()),
+                  );
+                },
               ),
               const SizedBox(height: 10),
               SubscriptionCard(
@@ -43,7 +57,13 @@ class HomeScreen extends StatelessWidget {
                 iconColor: AppColors.vert,
                 title: "Abonnement Actif",
                 count: 18,
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => AbonnementActifPage()),
+                  );
+                },
               ),
               const SizedBox(height: 10),
               SubscriptionCard(
@@ -51,7 +71,13 @@ class HomeScreen extends StatelessWidget {
                 iconColor: AppColors.rouge,
                 title: "Abonnement Inactif",
                 count: 7,
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => AbonnementInactifPage()),
+                  );
+                },
               ),
               Spacer(),
               Row(
@@ -60,7 +86,13 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CollectionPage()),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.grey[300],
                         padding: const EdgeInsets.symmetric(vertical: 15.0),
@@ -76,7 +108,13 @@ class HomeScreen extends StatelessWidget {
                           10), // Espacement horizontal entre les deux boutons
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //       builder: (context) => AbonnementPage()),
+                        // );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.vert,
                         padding: const EdgeInsets.symmetric(vertical: 15.0),

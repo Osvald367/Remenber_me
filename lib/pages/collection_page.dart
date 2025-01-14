@@ -1,124 +1,110 @@
 import 'package:flutter/material.dart';
+import 'package:remenber_me/components/appbar.dart';
+import 'package:remenber_me/components/colors.dart';
+import 'package:remenber_me/pages/paiement_page.dart';
 
 class CollectionPage extends StatelessWidget {
+  // Final list of collections
+  final List<Map<String, dynamic>> collections = [
+    {'title': 'Streaming', 'count': 7},
+    {'title': 'Web', 'count': 12},
+    {'title': 'Manuel', 'count': 31},
+    {'title': 'Bobe', 'count': 67},
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        title: Row(
-          children: [
-            Image.asset(
-              'images/logo.png', // Remplacez par le chemin de votre logo
-              height: 30,
-            ),
-            const SizedBox(width: 10),
-            Text(
-              'lorem lorem',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 15.0),
-            child: GestureDetector(
-              onTap: () {
-                // Action pour l'image de profil
-                print("Profil cliqué !");
-              },
-              child: Container(
-                width: 40,
-                height: 40,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: Colors.grey[300],
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(8),
-                  child: Image.asset(
-                    'images/profile.png', // Remplacez par votre image de profil
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
+      appBar: CustomAppBar(
+        titleFirstPart: 'Remember',
+        titleSecondPart: 'me',
+        logoPath: 'images/logo.png', // Chemin du logo
+        profileImagePath: 'images/profile.png', // Chemin de l'image de profil
+        onProfileTap: () {
+          // Action à effectuer lors du clic sur l'image de profil
+          Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PaiementPage()),
+                  );
+          print("Profil cliqué !");
+        },
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Collections",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
+      body: Container(
+        color: AppColors.blanc,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Collections",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
               ),
-            ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: GridView.count(
-                crossAxisCount: 2, // Nombre de colonnes
-                mainAxisSpacing: 10, // Espacement vertical
-                crossAxisSpacing: 10, // Espacement horizontal
-                childAspectRatio: 1, // Ratio largeur/hauteur
-                children: [
-                  // Carte "Ajouter une collection"
-                  GestureDetector(
-                    onTap: () {
-                      print("Ajouter une collection cliqué !");
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.2),
-                            blurRadius: 5,
-                            spreadRadius: 2,
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.add,
-                            size: 40,
-                            color: Colors.black,
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            "Ajouter une Collection",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.grey[600],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+              const SizedBox(height: 20),
+              Expanded(
+                child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2, // Nombre de colonnes
+                    mainAxisSpacing: 10, // Espacement vertical
+                    crossAxisSpacing: 10, // Espacement horizontal
+                    childAspectRatio: 1, // Ratio largeur/hauteur
                   ),
-                  // Autres cartes de collection
-                  buildCollectionCard("Streaming", 7),
-                  buildCollectionCard("Web", 12),
-                  buildCollectionCard("Manuel", 31),
-                ],
+                  itemCount: collections.length + 1, // Add 1 for the "Add Collection" card
+                  itemBuilder: (context, index) {
+                    if (index == 0) {
+                      // First item is the "Add Collection" card
+                      return GestureDetector(
+                        onTap: () {
+                          print("Ajouter une collection cliqué !");
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.2),
+                                blurRadius: 5,
+                                spreadRadius: 2,
+                              ),
+                            ],
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.add,
+                                size: 40,
+                                color: Colors.black,
+                              ),
+                              const SizedBox(height: 10),
+                              Text(
+                                "Ajouter une Collection",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.grey[600],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    } else {
+                      // Other collection cards
+                      final collection = collections[index - 1]; // Offset by 1 to skip the "Add" card
+                      return buildCollectionCard(collection['title'], collection['count']);
+                    }
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -128,22 +114,20 @@ class CollectionPage extends StatelessWidget {
   Widget buildCollectionCard(String title, int count) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.orange[300], // Couleur de la carte
+        image: DecorationImage(
+          image: AssetImage("images/icone_dossier.png"), // Chemin de l'image
+          // fit: BoxFit.cover, // S'étend pour couvrir tout l'écran
+          alignment: Alignment.topCenter,
+        ),
+        color: AppColors.blanc, // Couleur de la carte
         borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            blurRadius: 5,
-            spreadRadius: 2,
-          ),
-        ],
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.only(left: 10.0, right: 10.0),
             child: Text(
               title,
               style: TextStyle(
@@ -154,7 +138,7 @@ class CollectionPage extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.only(left: 10.0, right: 10.0),
             child: Text(
               "$count Abonnements",
               style: TextStyle(
