@@ -31,13 +31,13 @@ class _NewSubscribeState extends State<NewSubscribe> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             // Titre principal
-            Text(
+            const Text(
               'Nouvel Abonnement',
               style: TextStyle(
                 fontSize: 22,
@@ -45,55 +45,50 @@ class _NewSubscribeState extends State<NewSubscribe> {
                 color: Colors.black,
               ),
             ),
-            SizedBox(height: 20),
-            // Champs "Nom"
-           _buildRow(
-  title: 'Nom',
-  child: DropdownButton<String>(
-    value: selectedService,
-    icon: Icon(Icons.arrow_drop_down, color: Colors.grey),
-    dropdownColor: Colors.white, // Arrière-plan blanc du menu
-    underline: SizedBox(),
-    onChanged: (value) {
-      setState(() {
-        selectedService = value!;
-      });
-    },
-    items: services.map((String value) {
-      return DropdownMenuItem<String>(
-        value: value,
-        child: Row(
-          children: [
-            // Icône dynamique pour chaque service
-            if (value == 'Netflix')
-              Image.asset(
-                'images/Netflix-Logo-2006.png',
-                height: 15,
-              ),
-  
-              Image.asset(
-                'images/az.png',
-                height: 15,
-              ),
-            SizedBox(width: 10),
-            Text(value),
-          ],
-        ),
-      );
-    }).toList(),
-  ),
-),
+            const SizedBox(height: 20),
 
-            _buildRow(title: 'Collection', child: Text('Streaming')),
+            // Champs "Nom"
+            _buildRow(
+              title: 'Nom',
+              child: DropdownButton<String>(
+                value: selectedService,
+                icon: const Icon(Icons.arrow_drop_down, color: Colors.grey),
+                dropdownColor: Colors.white, // Arrière-plan blanc du menu
+                underline: const SizedBox(),
+                onChanged: (value) {
+                  setState(() {
+                    selectedService = value!;
+                  });
+                },
+                items: services.map((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Row(
+                      children: [
+                        // Icône dynamique pour chaque service
+                        if (value == 'Netflix')  Image.asset('images/Netflix-Logo-2006.png', height: 15,  ),
+                        if (value == 'Spotify') Icon(Icons.music_note, color: Colors.green),
+                        
+                        const SizedBox(width: 10),
+                        Text(value),
+                      ],
+                    ),
+                  );
+                }).toList(),
+              ),
+            ),
+
+            // Champs "Collection"
+            _buildRow(title: 'Collection', child: const Text('Streaming')),
+
             // Champs "Durée"
             _buildRow(
               title: 'Durée',
               child: DropdownButton<String>(
                 value: selectedDuration,
-                icon: Icon(Icons.arrow_drop_down, color: Colors.grey),
-    dropdownColor: Colors.white, // Arrière-plan blanc du menu
-
-                underline: SizedBox(),
+                icon: const Icon(Icons.arrow_drop_down, color: Colors.grey),
+                dropdownColor: Colors.white, // Arrière-plan blanc du menu
+                underline: const SizedBox(),
                 onChanged: (value) {
                   setState(() {
                     selectedDuration = value!;
@@ -107,25 +102,33 @@ class _NewSubscribeState extends State<NewSubscribe> {
                 }).toList(),
               ),
             ),
+
             // Champs "Début"
             _buildRow(title: 'Début', child: _buildDateRow('01/02/2021')),
+
             // Champs "Fin"
             _buildRow(title: 'Fin', child: _buildDateRow('01/02/2022')),
+
+            // Icon
             _buildRow(
               title: "Icon",
               child: _buildIconRow(),
             ),
+
             // Champs "Lien de la page d'abonnement"
             _buildRow(
               title: "Lien de la page d'abonnement",
               child: _buildLinkRow(),
             ),
+
             // Champs "Date d'alerte"
             _buildRow(
               title: "Date d'alerte",
               child: _buildDateRow('14/08/2025'),
             ),
-            SizedBox(height: 30),
+
+            const SizedBox(height: 30),
+
             // Boutons
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -140,12 +143,12 @@ class _NewSubscribeState extends State<NewSubscribe> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Annuler',
                     style: TextStyle(color: Colors.black),
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 ElevatedButton(
                   onPressed: () {
                     // Action Enregistrer
@@ -156,7 +159,7 @@ class _NewSubscribeState extends State<NewSubscribe> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Enregistrer',
                     style: TextStyle(color: Colors.white),
                   ),
@@ -171,19 +174,15 @@ class _NewSubscribeState extends State<NewSubscribe> {
 
   Widget _buildDateRow(String date) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Spacer(),
-        Container(
-          child: Text(
-            date,
-            style: TextStyle(fontSize: 14, color: Colors.grey),
-            textAlign: TextAlign.left,
-          ),
+        Text(
+          date,
+          style: const TextStyle(fontSize: 14, color: Colors.grey),
         ),
-        SizedBox(width: 8),
+        const SizedBox(width: 8),
         IconButton(
-          icon:
-              Icon(Icons.calendar_today, color: Colors.grey.shade600, size: 20),
+          icon: Icon(Icons.calendar_today, color: Colors.grey.shade600, size: 20),
           onPressed: () {
             // Logic de sélection de date
           },
@@ -194,13 +193,12 @@ class _NewSubscribeState extends State<NewSubscribe> {
 
   Widget _buildIconRow() {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Spacer(), // Pousse l'icône à l'extrémité droite
         IconButton(
-          icon:
-              Icon(Icons.image_outlined, color: Colors.grey.shade600, size: 20),
+          icon: Icon(Icons.image_outlined, color: Colors.grey.shade600, size: 20),
           onPressed: () {
-            // Logic pour le lien
+            // Logic pour l'icône
           },
         ),
       ],
@@ -209,8 +207,8 @@ class _NewSubscribeState extends State<NewSubscribe> {
 
   Widget _buildLinkRow() {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Spacer(), // Pousse l'icône à l'extrémité droite
         IconButton(
           icon: Icon(Icons.link, color: Colors.grey.shade600, size: 20),
           onPressed: () {
@@ -239,7 +237,7 @@ class _NewSubscribeState extends State<NewSubscribe> {
             flex: 2,
             child: Text(
               title,
-              style: TextStyle(fontSize: 16, color: Colors.grey),
+              style: const TextStyle(fontSize: 16, color: Colors.grey),
             ),
           ),
           Expanded(
